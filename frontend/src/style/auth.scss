@@ -1,0 +1,36 @@
+@import "colors";
+
+.auth-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-wrapper {
+  margin: 1% auto 0 auto;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 10px;
+
+  .form-box {
+    padding: 1rem;
+
+    h3 {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.form-wrapper-login {
+  @extend .form-wrapper;
+  margin: 4% auto 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .form-wrapper {
+    margin: 3% auto 0 auto;
+    max-width: 95%;
+  }
+}

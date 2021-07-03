@@ -1,10 +1,12 @@
 import React from 'react';
+import Path from "./Path";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     return (
-        <div>
-            <h1>Welcome to React App</h1>
-        </div>
+        <BrowserRouter>
+            <Path/>
+        </BrowserRouter>
     );
 }
 
