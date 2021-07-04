@@ -8,7 +8,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AuthUser
-        fields = ['name', 'phone_number', 'password', 'auth_token']
+        fields = ['name', 'phone_number', 'email', 'password', 'auth_token']
 
     def get_auth_token(self, user):
         return str(Token.objects.create(user=user))

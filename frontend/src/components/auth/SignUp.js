@@ -10,10 +10,8 @@ const SignUp = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const {register, handleSubmit, formState: {errors}, watch, setError} = useForm();
-    let password = watch("password", '');
+    const {register, handleSubmit, formState: {errors}, setError} = useForm();
 
-    //also add email to form
 
     const onSubmit = async data => {
         await axios.post(
@@ -68,6 +66,18 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-group mb-3">
+                        <label>Email address</label>
+                        <input type="email" placeholder="Email"
+                               className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                               {...register("email", {required: true})}
+                        />
+
+                        <div className="invalid-feedback">
+                            {errors.email?.message}
+                        </div>
+                    </div>
+
+                    <div className="form-group mb-3">
                         <label>Password</label>
                         <input type="password" className={`form-control ${errors.password ? 'is-invalid' : ''}`} placeholder="Password"
                                {...register("password", {required: true, maxLength: 20, minLength: 5})}
@@ -75,24 +85,6 @@ const SignUp = () => {
 
                         <div className="invalid-feedback">
                             {errors.password?.type === 'minLength' && "Password is too short"}
-                        </div>
-                    </div>
-
-                    <div className="form-group mb-3">
-                        <label>Confirm Password</label>
-                        <input type="password" placeholder="Confirm Password"
-                               className={`form-control ${errors.cnf_password ? 'is-invalid' : ''}`}
-                               {...register("cnf_password",
-                                   {
-                                       required: true,
-                                       maxLength: 20,
-                                       minLength: 5,
-                                       validate: value => value === password || "Password not match"
-                                   })}
-                        />
-                        <div className="invalid-feedback">
-                            {errors.cnf_password?.type === 'minLength' && "Password is too short"}
-                            {errors.cnf_password?.message}
                         </div>
                     </div>
 
